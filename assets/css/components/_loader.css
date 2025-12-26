@@ -40,7 +40,7 @@
 }
 
 .loader__bg__layer-1 {
-    background-image: url(/assets/images/menu-bg.webp);
+    background-image: url(assets/images/menu-bg.webp);
     background-size: cover;
     background-position: center;
     opacity: 0.3;
@@ -51,7 +51,7 @@
 }
 
 .loader__bg__layer-3 {
-    background-image: url(/assets/images/loader-bg.webp);
+    background-image: url(assets/images/loader-bg.webp);
     background-size: cover;
     background-position: center;
     opacity: 0.15;
