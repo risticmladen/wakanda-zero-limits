@@ -6,6 +6,27 @@
     position: relative;
 }
 
+.hero-start-logos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+}
+
+.hero__forever-logo img {
+    max-height: 6rem;
+}
+
+.start__title__h2 .start__title__h2__part-1 {
+    font-family: Gill Sans, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: .4em;
+    text-shadow: 0 0 0.1rem var(--shadow-color-1), 0 0 0.1rem var(--shadow-color-2);
+    top: 1.75rem;
+    left: 8.3rem;
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;
@@ -218,26 +239,4 @@
         width: 90vw;
         height: 70vh;
     }
-}
-
-
-.hero-start-logos {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1.6rem;
-}
-
-.hero__forever-logo img {
-    max-height: 6rem;
-}
-
-.start__title__h2 .start__title__h2__part-1 {
-    font-family: Gill Sans, Helvetica, Arial, sans-serif;
-    font-weight: 600;
-    letter-spacing: .4em;
-    text-shadow: 0 0 0.1rem var(--shadow-color-1), 0 0 0.1rem var(--shadow-color-2);
-    top: 1.75rem;
-    left: 8.3rem;
 }
