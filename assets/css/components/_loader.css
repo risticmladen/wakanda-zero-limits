@@ -1,0 +1,199 @@
+/* Loader Section */
+.section-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.loader__inner,
+.loader__inner__wrap,
+.loader__bg, 
+.loader__bg__layer-1,
+.loader__bg__layer-2, 
+.loader__bg__layer-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loader__bg__layer-1 {
+    background-image: url(/assets/images/menu-bg.webp);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+}
+
+.loader__bg__layer-2 {
+    background: rgba(8, 17, 10, 0.95);
+}
+
+.loader__bg__layer-3 {
+    background-image: url(/assets/images/loader-bg.webp);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+}
+
+.loader__inner__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+/* Loader Content */
+.loader-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    width: 100%;
+    max-width: 60rem;
+}
+
+/* Logos */
+.loader__logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.2s;
+}
+
+.start__logo--sprite {
+    display: flex;
+    align-items: center;
+}
+
+.start__logo--sprite svg {
+    width: 7rem;
+    height: auto;
+}
+
+.start__logos__divider {
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+}
+
+.start__logos__divider svg {
+    width: 0.8rem;
+    height: auto;
+}
+
+.hero__forever-logo {
+    display: flex;
+    align-items: center;
+}
+
+.hero__forever-logo img {
+    height: 4rem;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Main Title Logo */
+.loader-content > .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.8s;
+}
+
+.loader-content > .logo svg {
+    width: 100%;
+    max-width: 40rem;
+    height: auto;
+}
+
+/* Progress Indicator */
+.loader__progress-indicator {
+    width: 100%;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.5s;
+}
+
+.loader__progress__bar {
+    position: relative;
+    width: 100%;
+    height: 0.2rem;
+    overflow: hidden;
+}
+
+.loader__progress__bar__total {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0.2;
+}
+
+.loader__progress__bar__percent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #2df872 0%, #10f869 50%, #2df872 100%);
+    transform-origin: left center;
+    transform: scaleX(0);
+    box-shadow: 0 0 2rem rgba(45, 248, 114, 0.6),
+                0 0 4rem rgba(45, 248, 114, 0.3);
+    transition: transform 0.3s ease-out;
+}
+
+/* Percentage Text */
+.loader__progress-indicator::after {
+    content: attr(data-progress) '%';
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    color: #2df872;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 1rem rgba(45, 248, 114, 0.5);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

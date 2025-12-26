@@ -1,0 +1,227 @@
+.button {
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+
+    &:hover {
+        .button-primary__icon {
+            transform: translateX(10%);
+        }
+    }
+}
+
+.button--primary {
+    color: var(--secondary-color);
+    position: relative;
+
+    .button--primary-artifact {
+        display: block;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(0%);
+    }
+
+    .button__inner {
+        position: relative;
+
+        &:before,
+        &:after {
+            position: absolute;
+            content: '';
+            display: block;
+        }
+
+        &:after {
+            clip-path: polygon(0 0,90% 0,100% 20%,100% 100%,10% 100%,0 80%);
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 25%, rgba(26, 201, 87, 0.07) 25%, rgba(26, 201, 87, 0.07) 50%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.3) 75%, rgba(26, 201, 87, 0.07) 75%, rgba(26, 201, 87, 0.07) 100%);
+            background-size: 0.8rem 0.8rem;
+            background-color: rgba(26, 201, 87, 0.07);
+            z-index: -1;
+            left: .7rem;
+            top: .7rem;
+            width: calc(100% - 1.4rem);
+            height: 78%;
+        }
+
+        &:before {
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            background-image: url('data:image/svg+xml,<svg width="200" height="59" viewBox="0 0 200 59" fill="none" xmlns="http://www.w3.org/2000/svg"><g><g class="green-outline" filter="url(%23filter_D71YR19XM)"><path class="button__layer__path" d="m190 53.5h-173.7c-.5 0-1-.2-1.4-.6l-8.3-8.3c-.4-.4-.6-.9-.6-1.4v-29.7-3.5c0-2.2 1.8-4 4-4h173.7c.5 0 1 .199 1.4.6l8.3 8.3c.4.4.6.9.6 1.4v29.7 3.5c0 2.2-1.8 4-4 4" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 7 38 13 170 25 200 200" stroke-dashoffset="0"></path></g><defs><filter id="filter_D71YR19XM" x="0" y="0" width="240" height="99" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feGaussianBlur stdDeviation="2.5"></feGaussianBlur><feColorMatrix type="matrix" values="0 0 0 0 0.6 0 0 0 0 1 0 0 0 0 0.533333 0 0 0 1 0"></feColorMatrix><feBlend mode="normal" in2="BackgroundImageFix" result="fx1"></feBlend><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feGaussianBlur stdDeviation="1.5"></feGaussianBlur><feColorMatrix type="matrix" values="0 0 0 0 0.6 0 0 0 0 1 0 0 0 0 0.533333 0 0 0 0.7 0"></feColorMatrix><feBlend mode="normal" in2="fx1" result="fx2"></feBlend><feBlend mode="normal" in="SourceGraphic" in2="fx2" result="shape"></feBlend></filter></defs></g></svg>');
+        }
+    }
+
+    & .button__inner-bg {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 3.6rem;
+
+        &:after {
+            transition: transform 0.3s ease-in-out;
+            position: absolute;
+            top: .8rem;
+            left: .7rem;
+            content: '';
+            display: block;
+            clip-path: polygon(0 0,90% 0,100% 20%,100% 100%,10% 100%,0 80%);
+            background: rgba(45, 248, 114, 0.43);
+            box-shadow: 0 0.4rem 3rem rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8rem);
+            -webkit-backdrop-filter: blur(8rem);
+            width: 93%;
+            height: 120%;
+            opacity: 0;
+        }
+    }
+
+    &:hover {
+        .button__inner-bg:after {
+            opacity: .5;
+        }
+
+        .button--primary-artifact {
+            transform: translateX(70%);
+        }
+    }
+
+    .button__text {
+        letter-spacing: .4rem;
+        font-weight: 700;
+        position: relative;
+        z-index: 10;
+        font-size: 1.1rem;
+        margin-top: .3rem;
+    }
+
+    .button__icon {
+        svg {
+            color: var(--primary-color);
+            margin-top: .6rem;
+        }
+    }
+}
+
+.button--secondary {
+    color: var(--secondary-color);
+    height: var(--button-height);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        .button-secondary__icon {
+            transform: translateX(0.5rem);
+        }
+
+        .button__bg svg {
+            filter: drop-shadow(0 0 0.8rem rgba(45, 248, 114, 0.4));
+        }
+    }
+}
+
+.button-secondary__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    line-height: 2.1rem;
+    letter-spacing: 0.03em;
+    margin-top: .2rem;
+    margin-left: .4rem;
+}
+
+.button-secondary__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.button-secondary__icon--chervons {
+    height: 2rem;
+    width: 2.1rem;
+}
+
+.button__inner {
+    display: flex;
+    width: var(--button-width);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: var(--button-height);
+}
+
+.button__bg {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.button-primary__text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    white-space: nowrap;
+    left: 0;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+    line-height: 2.1rem;
+    margin-left: 2.5rem;
+
+}
+
+.button-primary__icon {
+    transition: transform .2s;
+}
+
+.button-primary__icon--chervons {
+    height: 2.1rem;
+}
+
+.menu-icon {
+    position: relative;
+    height: 3.5rem;
+    width: 3.5rem;
+    cursor: pointer;
+}
+
+.menu-icon__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu-icon__layer-2 {
+    filter: drop-shadow(0 0 0.4rem rgba(255, 255, 255, .7)) drop-shadow(0 -0.1rem 0.8rem #ffffff);
+}
+
+.menu-icon__svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #2df872;
+    transform: translate(-50%, -50%);
+}

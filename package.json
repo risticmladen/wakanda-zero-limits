@@ -1,0 +1,29 @@
+{
+  "name": "test_task_frontend_interactive_dev_mladen_ristic",
+  "version": "1.0.0",
+  "description": "Your goal is to showcase your ability to build a modern, non-standard, and interactive user interface. We want to see your problem-solving skills and your eye for detail in creating polished, engaging web experiences.",
+  "main": "postcss.config.js",
+  "scripts": {
+    "build:css": "postcss assets/css/styles.css -o web/styles.css",
+    "watch:css": "postcss assets/css/styles.css -o web/styles.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obox-systems/test_task_frontend_interactive_dev_mladen_ristic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/obox-systems/test_task_frontend_interactive_dev_mladen_ristic/issues"
+  },
+  "homepage": "https://github.com/obox-systems/test_task_frontend_interactive_dev_mladen_ristic#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.23",
+    "cssnano": "^7.1.2",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1"
+  }
+}

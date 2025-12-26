@@ -1,0 +1,684 @@
+/* Story Section */
+.story-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    overflow: hidden;
+    background: var(--text-dark);
+    --panorama-position: 50%;
+}
+
+/* Sci-Fi Hall Background - Panoramic */
+.story-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Stitched panoramic image */
+    background: url('/assets/images/opt-full-width-cinematic-background.webp') var(--panorama-position) center / cover no-repeat;
+    transform-origin: center center;
+    z-index: 0;
+    will-change: background-position;
+    opacity: 0;
+    transition: opacity 1s ease;
+    /* Quality enhancement filters */
+    filter: contrast(1.1) saturate(1.05) brightness(0.95);
+}
+
+.story-section.has-parallax::before {
+    opacity: 1;
+}
+
+/* Quality Enhancement Layer - Film Grain */
+.story-section .quality-enhancement {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+    /* Film grain texture to hide blur artifacts */
+    background-image: 
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="300" height="300" filter="url(%23noise)" opacity="0.05"/></svg>');
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+}
+
+.story-section.has-parallax .quality-enhancement {
+    opacity: 1;
+}
+
+/* Atmospheric overlay with vignette */
+.story-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        /* Strong vignette to hide edges */
+        radial-gradient(ellipse 100% 80% at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.7) 100%),
+        /* Golden light from top */
+        radial-gradient(ellipse 120% 100% at 50% 0%, rgba(184, 147, 82, 0.2) 0%, transparent 40%),
+        /* Green accent from bottom */
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(45, 248, 114, 0.1) 0%, transparent 50%),
+        /* Overall tint for atmosphere */
+        linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0.35) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Sun Rays Effect */
+.sun-rays {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.story-section.has-parallax .sun-rays {
+    opacity: 1;
+}
+
+.sun-ray {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    width: 0.2rem;
+    height: 150%;
+    background: linear-gradient(180deg, 
+        rgba(184, 147, 82, 0.7) 0%,
+        rgba(184, 147, 82, 0.4) 15%,
+        rgba(184, 147, 82, 0.2) 30%,
+        rgba(45, 248, 114, 0.15) 50%,
+        transparent 70%);
+    transform-origin: top center;
+    filter: blur(0.1rem);
+    animation: rayPulse 4s ease-in-out infinite;
+}
+
+.sun-ray::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12rem;
+    height: 12rem;
+    background: radial-gradient(circle, 
+        rgba(184, 147, 82, 0.5) 0%,
+        rgba(184, 147, 82, 0.3) 20%, 
+        rgba(45, 248, 114, 0.1) 40%,
+        transparent 70%);
+    filter: blur(2.5rem);
+}
+
+/* Individual ray rotations and delays */
+.sun-ray:nth-child(1) { transform: rotate(-40deg); animation-delay: 0s; }
+.sun-ray:nth-child(2) { transform: rotate(-30deg); animation-delay: 0.5s; }
+.sun-ray:nth-child(3) { transform: rotate(-20deg); animation-delay: 1s; }
+.sun-ray:nth-child(4) { transform: rotate(-10deg); animation-delay: 1.5s; }
+.sun-ray:nth-child(5) { transform: rotate(0deg); animation-delay: 2s; }
+.sun-ray:nth-child(6) { transform: rotate(10deg); animation-delay: 2.5s; }
+.sun-ray:nth-child(7) { transform: rotate(20deg); animation-delay: 3s; }
+.sun-ray:nth-child(8) { transform: rotate(30deg); animation-delay: 3.5s; }
+.sun-ray:nth-child(9) { transform: rotate(40deg); animation-delay: 0.3s; }
+
+/* Wider rays for depth */
+.sun-ray:nth-child(2),
+.sun-ray:nth-child(5),
+.sun-ray:nth-child(8) {
+    width: 0.3rem;
+    filter: blur(0.2rem);
+}
+
+@keyframes rayPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: rotate(var(--base-rotation)) scaleY(0.8);
+    }
+    50% {
+        opacity: 0.7;
+        transform: rotate(var(--base-rotation)) scaleY(1);
+    }
+}
+
+/* Horizontal Parallax Container */
+.story-section.has-parallax {
+    overflow: hidden;
+}
+
+.story-section.has-parallax .story-content {
+    width: 300vw;
+    display: flex;
+    will-change: transform;
+}
+
+.story-section.is-active {
+    display: block;
+    opacity: 1;
+}
+
+.section-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(45, 248, 114, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.story-content {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 2rem;
+    max-width: 140rem;
+    margin: 0 auto;
+}
+
+/* Wisdom Guide */
+.wisdom-guide {
+    position: fixed;
+    bottom: 4rem;
+    left: 4rem;
+    z-index: 100;
+    max-width: 45rem;
+    background: rgba(8, 17, 10, 0.95);
+    border: 0.1rem solid rgba(45, 248, 114, 0.3);
+    border-radius: 1.2rem;
+    padding: 2rem;
+    box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.6),
+                0 0 2.4rem rgba(45, 248, 114, 0.15);
+    backdrop-filter: blur(1rem);
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: all 0.5s ease;
+}
+
+.wisdom-guide.is-visible {
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+.wisdom-guide__content {
+    display: flex;
+    flex-direction: row;
+    gap: 2.4rem;
+}
+
+/* Rotating Core (Atom Globe) */
+.rotating-core {
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotating-core p {
+    position: absolute;
+    bottom: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.animation-of-rotating-core {
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    animation: rotateGlobe 8s linear infinite;
+}
+
+/* Atom Globe Structure */
+.animation-of-rotating-core::before,
+.animation-of-rotating-core::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.2rem solid rgba(45, 248, 114, 0.6);
+    border-radius: 50%;
+}
+
+/* Outer ring */
+.animation-of-rotating-core::before {
+    width: 6rem;
+    height: 6rem;
+    box-shadow: 0 0 1.2rem rgba(45, 248, 114, 0.4);
+}
+
+/* Inner ring - rotating */
+.animation-of-rotating-core::after {
+    width: 4rem;
+    height: 4rem;
+    border-color: rgba(45, 248, 114, 0.8);
+    animation: rotateRing 3s linear infinite reverse;
+}
+
+/* Center core */
+.animation-of-rotating-core {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0.8rem;
+        height: 0.8rem;
+        background: #2df872;
+        border-radius: 50%;
+        box-shadow: 0 0 1.2rem rgba(45, 248, 114, 0.8),
+                    0 0 2.4rem rgba(45, 248, 114, 0.4);
+        z-index: 10;
+    }
+}
+
+/* Orbital paths */
+.animation-of-rotating-core {
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 0.1rem solid rgba(45, 248, 114, 0.3);
+        border-radius: 50%;
+        transform: rotateX(60deg);
+    }
+}
+
+@keyframes rotateGlobe {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateRing {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Wisdom Guide Content */
+.wisdom-guide--p1,
+.wisdom-guide--p2 {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.wisdom-guide--p1.is-active,
+.wisdom-guide--p2.is-active {
+    display: block;
+    opacity: 1;
+}
+
+.wisdom-guide--p1 p,
+.wisdom-guide--p2 p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1.5rem 0;
+}
+
+.wisdom-guide--p1 span,
+.wisdom-guide--p2 span {
+    color: #2df872;
+    font-weight: 600;
+}
+
+/* Wisdom Guide Controls */
+.wisdom-guide__controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.wisdom-guide__controls button {
+    background: transparent;
+    border: 0.1rem solid rgba(45, 248, 114, 0.4);
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2df872;
+}
+
+.wisdom-guide__controls button:hover {
+    background: rgba(45, 248, 114, 0.1);
+    border-color: #2df872;
+    box-shadow: 0 0 1.2rem rgba(45, 248, 114, 0.4);
+}
+
+.wisdom-guide__controls button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.wisdom-guide__controls .pagination {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.wisdom-guide__controls .pagination span {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: rgba(45, 248, 114, 0.3);
+    transition: all 0.3s ease;
+}
+
+.wisdom-guide__controls .pagination span.is-active {
+    background: #2df872;
+    box-shadow: 0 0 0.8rem rgba(45, 248, 114, 0.6);
+}
+
+/* Control Arrows */
+.contol-arrows {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    transform: translateY(-50%);
+    padding: 0 4rem;
+}
+
+.contol-arrows li {
+    pointer-events: all;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* Show arrows when parallax is active */
+.story-section.has-parallax .contol-arrows li {
+    opacity: 0.7;
+}
+
+.contol-arrows li:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+.contol-arrows li.is-disabled {
+    opacity: 0.3 !important;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.contol-arrows__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: rgba(8, 17, 10, 0.95);
+    border: 0.2rem solid rgba(45, 248, 114, 0.6);
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.8),
+                0 0 2.4rem rgba(45, 248, 114, 0.3);
+    backdrop-filter: blur(1rem);
+}
+
+.contol-arrows__wrapper:hover {
+    border-color: #2df872;
+    box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.8),
+                0 0 3.2rem rgba(45, 248, 114, 0.6);
+}
+
+.icon__arrow--left,
+.icon__arrow--right {
+    width: 2rem;
+    height: 2rem;
+    border: 0.3rem solid #2df872;
+    border-top: none;
+    border-right: none;
+    transform: rotate(45deg);
+    box-shadow: 0 0 1.2rem rgba(45, 248, 114, 0.4);
+}
+
+.icon__arrow--right {
+    transform: rotate(-135deg);
+}
+
+/* Hide text labels on arrows */
+.control-arrows__divider,
+.control-arrow__text {
+    display: none;
+}
+
+/* Progress Indicator */
+.parallax-progress {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(8, 17, 10, 0.95);
+    border: 0.1rem solid rgba(45, 248, 114, 0.4);
+    border-radius: 5rem;
+    padding: 1rem 2.5rem;
+    box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.8),
+                0 0 2.4rem rgba(45, 248, 114, 0.15);
+    backdrop-filter: blur(1rem);
+}
+
+.parallax-progress__track {
+    width: 20rem;
+    height: 0.4rem;
+    background: rgba(45, 248, 114, 0.2);
+    border-radius: 0.2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-progress__bar {
+    height: 100%;
+    background: linear-gradient(90deg, #2df872 0%, #1ac957 100%);
+    border-radius: 0.2rem;
+    width: 0;
+    transition: width 0.3s ease-out;
+    box-shadow: 0 0 1.2rem rgba(45, 248, 114, 0.6);
+}
+
+.parallax-progress__label {
+    font-size: 1.2rem;
+    color: #2df872;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+/* Hide progress on mobile (use arrows instead) */
+@media (max-width: 76.8rem) {
+    .parallax-progress {
+        display: none;
+    }
+}
+
+/* Tutorial Panel */
+.tutorial-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: rgba(8, 17, 10, 0.98);
+    border: 0.1rem solid rgba(45, 248, 114, 0.4);
+    border-radius: 1.6rem;
+    padding: 3rem;
+    max-width: 60rem;
+    width: 90%;
+    box-shadow: 0 1.6rem 6.4rem rgba(0, 0, 0, 0.8),
+                0 0 4.8rem rgba(45, 248, 114, 0.2);
+    display: none;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+/* Green corner dots */
+.tutorial-panel {
+    &::before {
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0.8rem;
+            left: 0.8rem;
+            width: 0.6rem;
+            height: 0.6rem;
+            background: #2df872;
+            border-radius: 50%;
+            box-shadow: 0 0 0.8rem rgba(45, 248, 114, 0.8);
+        }
+    }
+}
+
+.tutorial-panel.is-visible {
+    display: block;
+    opacity: 1;
+}
+
+.tutorial-panel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.1rem solid rgba(45, 248, 114, 0.2);
+}
+
+.tutorial-panel__title h2 {
+    font-size: 2.4rem;
+    color: var(--text-light);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tutorial__symbol {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.tutorial__symbol:hover {
+    transform: rotate(90deg);
+}
+
+.tutorial-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.tutorial-panel li {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    border-bottom: 0.1rem solid rgba(45, 248, 114, 0.1);
+}
+
+.tutorial-panel li:last-child {
+    border-bottom: none;
+}
+
+.tutorial-panel li > span:first-child {
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2df872;
+}
+
+.tutorial-panel li > span:last-child {
+    flex: 1;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.tutorial-panel button {
+    margin-top: 2rem;
+    width: 100%;
+    background: rgba(45, 248, 114, 0.1);
+    border: 0.1rem solid #2df872;
+    border-radius: 0.8rem;
+    padding: 1.2rem 2rem;
+    color: #2df872;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.tutorial-panel button:hover {
+    background: rgba(45, 248, 114, 0.2);
+    box-shadow: 0 0 2.4rem rgba(45, 248, 114, 0.4);
+}
+
+@media (max-width: 76.8rem) {
+    .wisdom-guide {
+        left: 2rem;
+        right: 2rem;
+        bottom: 2rem;
+        max-width: none;
+        padding: 1.5rem;
+    }
+
+    .tutorial-panel {
+        padding: 2rem;
+    }
+}
