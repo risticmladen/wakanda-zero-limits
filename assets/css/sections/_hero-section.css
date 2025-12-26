@@ -1,0 +1,243 @@
+.content-wrapper {
+    position: relative;
+}
+
+.hero__forever-explore-container {
+    position: relative;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--text-dark);
+    --parallax-x: 0rem;
+    --parallax-y: 0rem;
+    --bg-transform: scale(1.1) translate(0rem, 0rem);
+}
+
+/* Parallax Background Container */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: -10%;
+    background: url('/assets/images/enter-section-background.webp') center center / cover no-repeat;
+    transform-origin: center center;
+    transform: var(--bg-transform);
+    z-index: 0;
+    will-change: transform;
+    animation: atmosphericGlow 8s ease-in-out infinite;
+}
+
+@keyframes atmosphericGlow {
+    0%, 100% {
+        filter: brightness(1) contrast(1);
+    }
+    50% {
+        filter: brightness(1.1) contrast(1.05);
+    }
+}
+
+/* Accessible Version Button */
+.accessible-container {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    max-width: 90vw;
+}
+
+/* Logos at top */
+.hero-start-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.5s;
+}
+
+.start__logo--sprite svg {
+    width: 7rem;
+    height: auto;
+}
+
+.start__logos__divider {
+    opacity: 0.4;
+}
+
+.start__logos__divider svg {
+    width: 0.8rem;
+    height: auto;
+}
+
+.hero__forever-logo img {
+    height: 4rem;
+    width: auto;
+    object-fit: contain;
+}
+
+
+.start__title__h2__part-1,
+.start__title__h2__part-3 {
+    position: absolute;
+    text-transform: uppercase;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--text-light);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    text-shadow: rgba(154,255,136,0.9) 0 0 3.9rem;
+}
+
+.start__title__h2__part-1 {
+    top: -.5rem;
+    left: 20%;
+    animation-delay: 0.8s;
+}
+
+.start__title__h2__part-3 {
+    top: 23%;
+    right: 20%;
+    animation-delay: 1s;
+    text-transform: uppercase;
+}
+
+.logo-big {
+    width: 70rem;
+    max-width: clamp(50rem, 70vw, 90rem);
+    height: auto;
+    opacity: 0;
+    animation: fadeInScale 1.2s ease forwards 0.7s;
+}
+
+/* Subtitles */
+.hero-subtitle {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.75rem;
+    opacity: 0;
+    transform: translateY(3rem);
+}
+
+.fade-in-up {
+    animation: fadeInUp 1s ease forwards;
+}
+
+.fade-in-up.delay-1 {
+    animation-delay: 1.2s;
+}
+
+.fade-in-up.delay-1:nth-of-type(2) {
+    animation-delay: 1.4s;
+}
+
+/* Enter Button Container */
+.hero-enter {
+    position: absolute;
+    bottom: 20%;
+    left: calc(50% - 10rem);
+    z-index: 20;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 1.6s;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 76.8rem) {
+    .hero-start-logos {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .start__logo--sprite svg {
+        width: 5rem;
+    }
+
+    .hero__forever-logo img {
+        height: 3rem;
+    }
+
+    .start__title__h2__part-1 {
+        top: -1.5rem;
+        text-transform: uppercase;
+    }
+
+    .hero-enter {
+        bottom: 2rem;
+    }
+
+    .accessible-container {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .hero-section::after {
+        width: 90vw;
+        height: 70vh;
+    }
+}
+
+
+.hero-start-logos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+}
+
+.hero__forever-logo img {
+    max-height: 6rem;
+}
+
+.start__title__h2 .start__title__h2__part-1 {
+    font-family: Gill Sans, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: .4em;
+    text-shadow: 0 0 0.1rem var(--shadow-color-1), 0 0 0.1rem var(--shadow-color-2);
+    top: 1.75rem;
+    left: 8.3rem;
+}

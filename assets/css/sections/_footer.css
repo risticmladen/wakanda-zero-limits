@@ -1,0 +1,33 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    border: 0.1rem solid rgba(255, 255, 255, 0.3);
+    width: 34.5rem;
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.4rem;
+}
+
+.footer__logo-element {
+    border-right: 0.1rem solid rgba(255, 255, 255, 0.3);
+    padding: 0.5rem;
+
+    svg,
+    img {
+        max-height: 3rem;
+    }
+
+    picture {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+.copyright-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2rem;
+    color: rgba(255, 255, 255, 0.5);
+
+}

@@ -1,0 +1,31 @@
+:root {
+    /* Color Palette */
+    --primary-color: rgb(45, 248, 114);
+    --secondary-color: #FFF;
+    --gold-accent: #fbbf24;
+    --vibranium-green: #2df872;
+    --dark-bg: #0a0a0f;
+    --darker-bg: #050508;
+    --text-light: #FFF;
+    --text-dark: #000;
+    --text-secondary: #cbd5e1;
+    --overlay-dark: rgba(0, 0, 0, 0.7);
+
+    --shadow-color-1: rgba(153, 255, 136, .7);
+    --shadow-color-2: #99ff88;
+    --shadow-color-3: #106f00;
+    --shadow-color-4: rgba(153, 255, 136, .5);
+    --shadow-color-5: rgba(16, 111, 0, .8);
+    --shadow-color-6: #1E1E1E;
+
+    /* Typography */
+    --font-sans: Gilroy, Helvetica, Arial, sans-serif;
+    --font-gill: Gill Sans, Helvetica, Arial, sans-serif;
+    --font-domaine: Domaine, Times New Roman, Georgia, serif;
+
+    --button-height: 6rem;
+    --button-width: 20rem;
+
+    /* Spacing */
+    --section-padding: 8rem 2rem;
+}

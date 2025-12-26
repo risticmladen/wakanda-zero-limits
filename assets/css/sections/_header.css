@@ -1,0 +1,17 @@
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2.4rem;
+    pointer-events: none;
+    transform: translateY(-100%);
+}
+
+.header__logo {
+    display: block;
+    height: 5rem;
+    width: 17.5rem;
+}

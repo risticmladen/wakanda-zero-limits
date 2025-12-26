@@ -1,0 +1,82 @@
+@font-face {
+    font-family: Domaine;
+    font-display: swap;
+    src: url(/assets/fonts/domainedisp-regular-webfont.woff2) format("woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Domaine;
+    font-display: swap;
+    src: url(/assets/fonts/domainedisp-medium-webfont.woff2) format("woff2");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Domaine;
+    font-display: swap;
+    src: url(/assets/fonts/domainedisp-semibold-webfont.woff2) format("woff2");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Gilroy;
+    font-display: swap;
+    src: url(/assets/fonts/gilroy-regular.woff2) format("woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Gilroy;
+    font-display: swap;
+    src: url(/assets/fonts/gilroy-medium.woff2) format("woff2");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Gilroy;
+    font-display: swap;
+    src: url(/assets/fonts/gilroy-semibold.woff2) format("woff2");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Gilroy;
+    font-display: swap;
+    src: url(/assets/fonts/gilroy-bold.woff2) format("woff2");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Modern Wakandan;
+    src: url(/assets/fonts/modernwakandan-bold.woff2) format("woff2");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Gill Sans;
+    src: url(/assets/fonts/gillsans-semibold.woff2) format("woff2");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Gill Sans;
+    src: url(/assets/fonts/gillsans-regular.woff2) format("woff2");
+    font-weight: 400;
+}
+
+.font-sans {
+    font-family: Gilroy, Helvetica, Arial, sans-serif;
+}
+
+.font-gill {
+    font-family: Gill Sans, Helvetica, Arial, sans-serif;
+}
+
+.font-domaine {
+    font-family: Domaine, Times New Roman, Georgia, serif;
+}
+
+.font-symbols {
+    font-family: Modern Wakandan;
+}
