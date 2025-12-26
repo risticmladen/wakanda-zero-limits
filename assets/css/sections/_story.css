@@ -17,7 +17,7 @@
     position: absolute;
     inset: 0;
     /* Stitched panoramic image */
-    background: url('/assets/images/opt-full-width-cinematic-background.webp') var(--panorama-position) center / cover no-repeat;
+    background: url('../../../assets/images/opt-full-width-cinematic-background.webp') var(--panorama-position) center / cover no-repeat;
     transform-origin: center center;
     z-index: 0;
     will-change: background-position;
